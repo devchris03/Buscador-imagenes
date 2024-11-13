@@ -1,0 +1,88 @@
+:root {
+    font-size: 16px;
+    --colorWhite: #F7F7F7;
+    --colorGreen: rgb(20, 188, 125);
+    --colorBlack: #191b26;
+}
+
+/* global */
+body {
+    margin: 0;
+    font-size: 1rem;
+    color: var(--colorBlack);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background: var(--colorWhite);
+}
+
+.wrapper {
+    max-inline-size: 75rem;
+    margin-inline: auto;
+    padding-inline: 1rem;
+}
+
+
+/* hero */
+
+.hero {
+    background-image: image-set(
+        url('../img/portada.avif') type('image/avif'),
+        url('../img/portada.webp') type('image/webp'),
+        url('../img/portada.jpg') type('image/jpg')
+        );
+        
+    background-size: cover;
+    background-position: center;
+    padding-block: 3.5rem;
+}
+
+.hero_content {
+    color: var(--colorWhite);
+}
+
+
+.input {
+    inline-size: 100%;
+    padding: 1rem;
+    margin-block: .25rem 1rem;
+    box-sizing: border-box;
+    border-radius: 2.5rem;
+    border: none;
+    font-size: 1rem;
+}
+
+.btn {
+    display: block;
+    inline-size: 100%;
+    max-inline-size: 25rem;
+    padding: .625rem;
+    border-radius: 1rem;
+    border: none;
+    background: var(--colorGreen);
+    color: var(--colorWhite);
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 2px 2px 2px rgba(5, 131, 85, .5);
+    margin-inline: auto;
+}
+
+
+/* media queries */
+@media (width >= 768px) {
+    .hero {
+        padding: 4.5rem;
+    }
+
+    .title {
+        text-align: center;
+    }
+}
+
+@media (width >= 1024px) {
+    .hero {
+        padding: 6rem;
+    }
+
+    .title {
+        text-align: center;
+    }
+}
