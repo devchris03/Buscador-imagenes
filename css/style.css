@@ -40,6 +40,7 @@ body {
 }
 
 
+/* form */
 .input {
     inline-size: 100%;
     padding: 1rem;
@@ -65,6 +66,12 @@ body {
     margin-inline: auto;
 }
 
+.alert {
+    color: rgb(215, 5, 5);
+    background: rgb(243, 206, 206);
+    padding-block: 1rem;
+    text-align: center;
+}
 
 /* media queries */
 @media (width >= 768px) {
