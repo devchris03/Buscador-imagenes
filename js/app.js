@@ -21,6 +21,7 @@ function validate(event) {
     }
 
     searchImages(terminoInput);
+    form.reset();
 }
 
 
@@ -31,7 +32,37 @@ function searchImages(termino) {
 
     fetch(apiURL)
         .then(result => result.json())
-        .then(result => showImages(result.hits));
+        .then(result => showImages(result.hits))
+}
+
+
+// muestra imagenes
+function showImages(images) {
+    
+    // borra resultados previos
+    while(result.firstChild) {
+        result.removeChild(result.firstChild);
+    }
+    
+    // itera resultados
+    images.forEach(img => {
+        const {downloads, largeImageURL, likes, previewURL, tags} = img;
+        const imgContainer = document.createElement('ARTICLE');
+        imgContainer.classList.add('imgContainer');
+        imgContainer.tabIndex = "0";
+        imgContainer.innerHTML = `
+            <img src="${previewURL}" alt="Imagen relacionado con ${tags}">
+            <div class="details">
+                <p><span class="strong">${likes}</span> Me gusta</p>
+                <p><span class="strong">${downloads}</span> Descargas</p>
+            </div>
+            <a href="${largeImageURL}" target="_blank" class="btn">Descargar</a>
+        `;
+
+        result.classList.add('grid');
+        result.appendChild(imgContainer);
+    })
+    
 }
 
 

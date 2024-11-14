@@ -20,6 +20,11 @@ body {
     padding-inline: 1rem;
 }
 
+img {
+    vertical-align: middle;
+    inline-size: 100%;
+}
+
 
 /* hero */
 
@@ -64,6 +69,8 @@ body {
     cursor: pointer;
     box-shadow: 2px 2px 2px rgba(5, 131, 85, .5);
     margin-inline: auto;
+    box-sizing: border-box;
+    text-align: center;
 }
 
 .alert {
@@ -71,6 +78,66 @@ body {
     background: rgb(243, 206, 206);
     padding-block: 1rem;
     text-align: center;
+}
+
+/* resultados */
+
+main {
+    padding-block: 3rem 4rem;
+    block-size: min-content;
+}
+
+.result.grid {
+    column-count: 2;
+    columns: 20rem;
+    column-gap: .5rem;
+}
+
+.imgContainer {
+    position: relative;
+    margin-block-end: .5rem;
+}
+
+.details {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: .25rem;
+    justify-content: end;
+
+    position: absolute;
+    inline-size: 100%;
+    block-size: 100%;
+    padding: 1rem;
+    box-sizing: border-box;
+    inset-block-start: 0;
+    inset-inline-start: 0;
+    z-index: 1;
+    background: linear-gradient(to top right, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0) 80%);
+    color: var(--colorWhite);
+
+    & p {
+        margin: 0;
+    }
+
+    & .strong {
+        font-weight: 700;
+    }
+}
+
+.imgContainer .btn {
+    position: absolute;
+    inset-inline-start: 50%;
+    inset-block-start: 50%;
+    max-inline-size: 70%;
+    transform: translateX(-50%) translateY(-50%);
+    z-index: 2;
+    visibility: hidden;
+}
+
+.imgContainer:focus .btn,
+.imgContainer:hover .btn{
+    visibility: visible;
 }
 
 /* media queries */
