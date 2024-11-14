@@ -19,6 +19,19 @@ function validate(event) {
         showAlert('Error: Agregue un término de búsqueda.');
         return;
     }
+
+    searchImages(terminoInput);
+}
+
+
+// consulta api
+function searchImages(termino) {
+    const key = "47080193-968844eeb3e2617f32c8d5b3f";
+    const apiURL = `https://pixabay.com/api/?key=${key}&q=${termino}`;
+
+    fetch(apiURL)
+        .then(result => result.json())
+        .then(result => showImages(result.hits));
 }
 
 
