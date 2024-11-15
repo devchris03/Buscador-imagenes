@@ -140,6 +140,31 @@ main {
     visibility: visible;
 }
 
+
+.pagination {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    padding-block: 1rem 3rem;
+}
+
+.page {
+    text-decoration: none;
+    color: var(--colorBlack);
+    background: var(--colorGreen);
+    display: inline-block;
+    padding: .25rem .25rem;
+    text-align: center;
+    border-radius: .25rem;
+    font-size: 1rem;
+    font-weight: 700;
+    flex-basis: 2.5rem;
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+
 /* media queries */
 @media (width >= 768px) {
     .hero {
