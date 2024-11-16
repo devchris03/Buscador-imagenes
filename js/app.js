@@ -4,9 +4,11 @@ const result = document.querySelector('#result');
 const pagination = document.querySelector('#pagination');
 
 // -------------------------- VARIABLES --------------------------
+let terminoInput;
 const n = 30;
 let totalPage;
 let iterador;
+let NumberPage = 1;
 
 // -------------------------- EVENTOS --------------------------
 
@@ -19,7 +21,7 @@ window.onload = () => {
 function validate(event) {
     event.preventDefault();
 
-    const terminoInput = document.querySelector("#termino").value;
+    terminoInput = document.querySelector("#termino").value;
 
     if(terminoInput.trim() === '') {
         clearHtml(result);
@@ -32,15 +34,15 @@ function validate(event) {
         return;
     }
 
-    searchImages(terminoInput);
+    searchImages(terminoInput, NumberPage);
     form.reset();
 }
 
 
 // consulta api
-function searchImages(termino) {
+function searchImages(termino, page) {
     const key = "47080193-968844eeb3e2617f32c8d5b3f";
-    const apiURL = `https://pixabay.com/api/?key=${key}&q=${termino}&per_page=${n}`;
+    const apiURL = `https://pixabay.com/api/?key=${key}&q=${termino}&per_page=${n}&page=${page}`;
 
     fetch(apiURL)
         .then(result => result.json())
@@ -92,6 +94,8 @@ function showImages(images) {
 function showPages() {
     iterador = createGenerator(totalPage)
 
+    clearHtml(pagination)
+
     while(true) {
         const {value, done} = iterador.next();
         
@@ -102,8 +106,13 @@ function showPages() {
         page.textContent = value;
         page.dataset.pagima = value;
         page.classList.add('page');
+        page.onclick = () => {
+            NumberPage = value;
+            searchImages(terminoInput, NumberPage)
+        }
 
         pagination.appendChild(page);
+        
     }
 }
 
