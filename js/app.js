@@ -40,16 +40,18 @@ function validate(event) {
 
 
 // consulta api
-function searchImages(termino, page) {
+async function searchImages(termino, page) {
     const key = "47080193-968844eeb3e2617f32c8d5b3f";
     const apiURL = `https://pixabay.com/api/?key=${key}&q=${termino}&per_page=${n}&page=${page}`;
 
-    fetch(apiURL)
-        .then(result => result.json())
-        .then(result => {
-            totalPage = calculate(result.totalHits)
-            showImages(result.hits)
-        })
+    try {
+        const result = await fetch(apiURL);
+        const resultado = await result.json();
+        totalPage = calculate(resultado.totalHits);
+        showImages(resultado.hits)
+    } catch (error) {
+        
+    }
 }
 
 
